@@ -34,5 +34,6 @@
         <property name="template" ref="redisTemplate"></property>
     </bean>
     <bean id="firstClient" class="com.yao.spring.redis.impl.FirstClientImpl" parent="redisBase"/>
+    <bean id="counter" class="com.yao.spring.redis.counter.Counter" parent="redisBase"/>
 
 </beans>
