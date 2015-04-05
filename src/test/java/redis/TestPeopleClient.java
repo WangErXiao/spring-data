@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by yaozb on 15-4-5.
  */
@@ -31,7 +33,7 @@ public class TestPeopleClient {
     }
     @Test
     public void queryPeople(){
-        People people=peopleClient.get("1");
+        People people=peopleClient.get("3");
         System.out.println(JSONObject.toJSON(people));
         System.out.println("---------OK");
 
@@ -46,5 +48,15 @@ public class TestPeopleClient {
         System.out.println(JSONObject.toJSON(peopleClient.getPeopleByTitle1("pro")));
         System.out.println("---------OK");
     }
-
+    @Test
+    public void addTempory(){
+        People people=new People(){{
+            setId("3");
+            setName("wangerxiao3");
+            setAge(14);
+            setTitle("pro");
+        }};
+        peopleClient.addTemporary(people, 3000, TimeUnit.SECONDS);
+        System.out.println("---------OK");
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.query.SortQuery;
 import org.springframework.data.redis.core.query.SortQueryBuilder;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by yaozb on 15-4-5.
@@ -74,4 +75,21 @@ public class PeopleClientImpl extends RedisBase implements PeopleClient  {
         people.setAge(ops.get("age") == null ? null : Integer.parseInt(ops.get("age")));
         return people;
     }
+
+    @Override
+    public void addTemporary(People people,int time,TimeUnit timeUnit) {
+        BoundHashOperations<String,String,String> ops=template.boundHashOps(PREFIX + people.getId());
+        HashMap<String,String> map=new HashMap<String, String>();
+        map.put("id",people.getId());
+        map.put("name",people.getName());
+        map.put("title",people.getTitle());
+        map.put("age",people.getAge().toString());
+        ops.putAll(map);
+        if(people.getTitle()!=null){
+            BoundSetOperations<String,String> setOperations=template.boundSetOps(PREFIX_PEOPLES_TITLE+people.getTitle());
+            setOperations.add(people.getId());
+        }
+        ops.expire(time,timeUnit);
+    }
+
 }
