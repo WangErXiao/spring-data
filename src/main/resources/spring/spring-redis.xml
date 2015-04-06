@@ -35,5 +35,6 @@
     </bean>
     <bean id="firstClient" class="com.yao.spring.redis.impl.FirstClientImpl" parent="redisBase"/>
     <bean id="peopleClient" class="com.yao.spring.redis.impl.PeopleClientImpl" parent="redisBase"/>
+    <bean id="pipelineClient" class="com.yao.spring.redis.impl.PipelineClientImpl" parent="redisBase"/>
     <bean id="counter" class="com.yao.spring.redis.counter.Counter" parent="redisBase"/>
 </beans>
