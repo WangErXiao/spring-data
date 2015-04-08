@@ -13,6 +13,7 @@
         <jedis.version>2.1.0</jedis.version>
         <fastjson.version>1.1.46</fastjson.version>
         <junit.version>4.12</junit.version>
+        <commons.version>3.3.2</commons.version>
         <spring.framework.version>3.1.1.RELEASE</spring.framework.version>
     </properties>
 
@@ -42,6 +43,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -37,4 +37,5 @@
     <bean id="peopleClient" class="com.yao.spring.redis.impl.PeopleClientImpl" parent="redisBase"/>
     <bean id="pipelineClient" class="com.yao.spring.redis.impl.PipelineClientImpl" parent="redisBase"/>
     <bean id="counter" class="com.yao.spring.redis.counter.Counter" parent="redisBase"/>
+    <bean id="ZsetClient" class="com.yao.spring.redis.impl.ZsetClientImpl" parent="redisBase"/>
 </beans>
